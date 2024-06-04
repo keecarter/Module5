@@ -1,5 +1,6 @@
-import express from "express";
+//import express from "express";
 
+/* Exercise 1
 const app = express();
 const port = 3000;
 
@@ -30,3 +31,21 @@ app2.get("/test", (req, res) => {
 app2.listen(port2, () => {
   console.log(`App2 listening at http://localhost:${port2}`);
 });
+*/
+
+//Exercise 2
+import express from "express";
+import myTestRoutes from "./routes/myTestRoutes.js"; 
+import calculatorRoutes from "./routes/calculatorRoutes.js";
+
+const app = express();
+const port = 3002;
+
+app.use("/", express.static("public"));
+
+app.use("/myTest", myTestRoutes);
+app.use("/calculator", calculatorRoutes);
+
+app.listen(port, () => {
+    console.log(`myapp listening at http://localhost:${port}`);
+  });
