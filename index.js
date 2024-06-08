@@ -34,18 +34,28 @@ app2.listen(port2, () => {
 */
 
 //Exercise 2
+
 import express from "express";
-import myTestRoutes from "./routes/myTestRoutes.js"; 
+//import myTestRoutes from "./routes/myTestRoutes.js"; 
 import calculatorRoutes from "./routes/calculatorRoutes.js";
+import app from "./app"; 
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json';
 
 const app = express();
-const port = 3002;
+const port = 3000;
 
 app.use("/", express.static("public"));
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument)
+);
 
-app.use("/myTest", myTestRoutes);
+//app.use("/myTest", myTestRoutes);
 app.use("/calculator", calculatorRoutes);
 
 app.listen(port, () => {
     console.log(`myapp listening at http://localhost:${port}`);
   });
+
