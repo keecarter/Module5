@@ -1,12 +1,14 @@
 import express from 'express';
 const router = express.Router();
 
+
 /*router.get('/add', (req, res) => {
     console.log(req.query);
     res.send(req.query);
 })*/
 
 //Exercise 3
+/*
 router.get("/add", (req, res) => {
     let number1 = parseInt(req.query.num1);
     let number2 = parseInt(req.query.num2);
@@ -23,6 +25,7 @@ router.get("/add", (req, res) => {
     });*/
 
     //Exercise 3
+/*
 router.get("/subtract", (req, res) => {
 let number1 = parseInt(req.query.num1);
 let number2 = parseInt(req.query.num2);
@@ -31,6 +34,7 @@ console.log(difference);
 res.status(200);
 res.json({ result: difference });
 });
+
 //http://localhost:3000/calculator/subtract?num1=4&num2=10
 
 /*router.get('/multiply', (req, res) => {
@@ -39,6 +43,7 @@ res.json({ result: difference });
     });*/
 
     //Exercise 3
+/*
 router.get("/multiply", (req, res) => {
 let number1 = parseInt(req.query.num1);
 let number2 = parseInt(req.query.num2);
@@ -55,6 +60,7 @@ res.json({ result: product });
     });*/
 
     //Exercise 3
+/*
 router.get("/divide", (req, res) => {
 let number1 = parseInt(req.query.num1);
 let number2 = parseInt(req.query.num2);
@@ -67,5 +73,16 @@ res.status(200).json({ result: quotient });
 }
 });
 //http://localhost:3000/calculator/divide?num1=4&num2=10
+*/
 
-    export default router;
+import addController from "../controllers/addController";
+import subtractController from "../controllers/subtractController";
+import multiplyController from "../controllers/multiplyController";
+import divideController from "../controllers/divideController";
+
+router.get("/add", addController.add);
+router.get("/subtract", subtractController.subtract);
+router.get("/multiply", multiplyController.multiply);
+router.get("/divide", divideController.divide);
+
+export default router;
